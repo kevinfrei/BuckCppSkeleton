@@ -1,0 +1,35 @@
+srcs = ['stat1.cpp', 'stat2.cpp']
+preproc = ['-DVERSION=\"1.3.2\"']
+headers = {
+    'stat-public.h': 'include/stat-public.h',
+    'stat-private.h': 'impl-include/stat-private.h'
+}
+
+cxx_library(
+    name = 'staticLib',
+    srcs = srcs,
+    preprocessor_flags = preproc,
+    headers = headers,
+    header_namespace = 'stat',
+    exported_headers = {
+        'stat-public.h': 'include/stat-public.h',
+    },
+    link_style = 'static_pic',
+    visibility = ['//...'],
+)
+# Same thing here
+# There are some useful macros that can be found on cmake's website
+#set (STATICLIB_INCLUDES "${PROJECT_SOURCE_DIR}/include")
+#set (STATICLIB_DEFINES "VERSION=\"1.3.1\"")
+
+#include_directories(${STATICLIB_INCLUDES} "${PROJECT_SOURCE_DIR}/impl-include")
+#add_library(staticLib STATIC ${STATICLIB_SOURCES})
+# Any of the "PUBLIC" link libraries will be used by any
+# dependent projects when they link...
+# target_link_libraries(staticLib PUBLIC ${OTHER_LIBS})
+#set_target_properties(staticLib PROPERTIES
+#  COMPILE_DEFINITIONS "${STATICLIB_DEFINES}"
+#  OUTPUT_NAME demoStat
+#)
+# You only need to install it if it's part of the final bits (SDK or something)
+# install(TARGETS staticLib ARCHIVE DESTINATION lib)

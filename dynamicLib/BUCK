@@ -1,0 +1,20 @@
+srcs = ['dyn1.cpp', 'dyn2.cpp']
+preproc = ['-DVERSION=\"1.1.1\"']
+headers = {
+    'dyn-public.h': 'include/dyn-public.h',
+}
+
+cxx_library(
+    name = 'dynamicLib',
+    srcs = srcs,
+    preprocessor_flags = preproc,
+    headers = headers,
+    header_namespace = 'dyn',
+    exported_headers = {
+        'dyn-public.h':'include/dyn-public.h'
+    },
+    link_style = 'shared',
+    preferred_linkage = 'shared',
+    deps = ['//staticLib:staticLib'],
+    visibility = ['//...'],
+)

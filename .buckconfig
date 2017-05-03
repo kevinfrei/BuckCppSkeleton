@@ -1,0 +1,23 @@
+[cache]
+  mode = dir
+
+[cxx]
+  default_platform = macosx-x86_64
+  cflags = -g -std=c11
+  cxxflags = -g -std=c++14
+  # Many ARC APIs don't compile with separate preprocess and compile.
+  combined_preprocess_and_compile = true
+
+[alias]
+  theApp = //theApp:theApp
+  stat = //staticLib:staticLib
+  dyn = //dynamicLib:dynamicLib
+
+[project]
+  default_android_manifest = //android/AndroidManifest.xml
+  ignore = .buckd, \
+           .hg, \
+           .git, \
+           .idea, \
+           buck-cache, \
+           buck-out, \
