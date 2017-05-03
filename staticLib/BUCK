@@ -15,7 +15,7 @@ cxx_library(
         'stat-public.h': 'include/stat-public.h',
     },
     link_style = 'static_pic',
-    visibility = ['//...'],
+    visibility = ['PUBLIC'],
 )
 # Same thing here
 # There are some useful macros that can be found on cmake's website

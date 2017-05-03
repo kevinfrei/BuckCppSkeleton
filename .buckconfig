@@ -14,7 +14,6 @@
   dyn = //dynamicLib:dynamicLib
 
 [project]
-  default_android_manifest = //android/AndroidManifest.xml
   ignore = .buckd, \
            .hg, \
            .git, \

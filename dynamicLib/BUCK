@@ -16,5 +16,5 @@ cxx_library(
     link_style = 'shared',
     preferred_linkage = 'shared',
     deps = ['//staticLib:staticLib'],
-    visibility = ['//...'],
+    visibility = ['PUBLIC'],
 )
